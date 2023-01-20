@@ -12,21 +12,24 @@ This repository contains model, which classify flowers into one of 5 categories:
 
 ## Installation
 
-Please follow these steps to 
+Please follow these steps:
 
-1. `git clone git@github.com:michalpiasecki0/classification_flowers.git`
-2. `python3 -m venv venv`
-3. `pip install -r requirements.txt`
+1. Move to directory where you want to save this project
+1. Clone directory: `git clone git@github.com:michalpiasecki0/classification_flowers.git`
+2. Create venv for this project: `python3 -m venv venv`
+3. Install required packages: `pip install -r requirements.txt`
 
 
 ## Interference
 
-`scripts\predict.py` is responsible for interference.
-Please type in following command in command line to perform interference on some photo (from home directory).
+Script `scripts\predict.py` is responsible for interference.
+Please type in following command in command line to perform interference on some photo.
 
 `python scripts/predict.py -i <path_to_image>`
 
 Some example photos are located in `data/interference` folder.
+
+Image with confidence score and predicted flower will pop up. Click `Enter` to close window.
 
 ## Training 
 
