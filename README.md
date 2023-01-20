@@ -34,8 +34,7 @@ Image with confidence score and predicted flower will pop up. Click `Enter` to c
 ## Training 
 
 Model was trained on flowers dataset taken from: [kaggle.com/datasets/alxmamaev/flowers-recognition](https://www.kaggle.com/datasets/alxmamaev/flowers-recognition)
-I decided to fine-tune ResNet34 model with new FCN at the end of the network. I trained two models: one with frozen parameters in convolution part, and one 
-with all parameters unfrozen. I saved the models, from the epoch with the best validation loss. Models parameters and plots with learning history are held in `models` folder
+I decided to fine-tune ResNet34 model with new FCN at the end of the network. I decided to train two models for 20 epochs, saving version from epoch with the best performance on validation loss. Firstly I decided to train network with all parameters unfrozen. This resulted in a quite unstable learning (probably it would be better, after longer time). Later, i decided to train model, with convolutional part frozen. Taking into acount that models were trained only for 20 epochs, the latter approach turned out to be better, with higher accuracy and more stable learning. I saved the models, from the epoch with the best validation loss. Models parameters and plots with learning history are held in `models` folder
 In order to same training please follow these steps:
 
 1. Download flowers dataset from [link](https://www.kaggle.com/datasets/alxmamaev/flowers-recognition), unzip it and 
@@ -59,4 +58,7 @@ To infer from model, use GET with parameters listed in docs, and image_path indi
 E.g `http://127.0.0.1:8000/infer/device=cpu&model_name=backbone_frozen&image_path=/home/skocznapanda/programming/classification_deeptale/data/interference/example_1.jpg`    
 The response gives you predicted class and model confidence    
 E.g `[["tulip",0.9980118274688721]]`
+
+### Use pre-commit
+
 
