@@ -15,7 +15,12 @@ from src.multiclass_model import MultiClassClassifier
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--image", required=True, help="path to the input image")
-    parser.add_argument("-m", "--model", choices=["default"], default="backbone_frozen")
+    parser.add_argument(
+        "-m",
+        "--model",
+        choices=["backbone_frozen, backbone_updated"],
+        default="backbone_frozen",
+    )
     parser.add_argument("-d", "--device", choices=["cuda", "cpu"], default="cpu")
     return parser.parse_args()
 
