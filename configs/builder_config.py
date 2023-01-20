@@ -1,10 +1,10 @@
 import os.path
 from pathlib import Path
 
-BASE_PATH = list(Path('/home').glob('**/classification_deeptale'))
+BASE_PATH = list(Path('/home').glob('**/classification_flowers'))
 
 if len(BASE_PATH) != 1:
-    raise Exception(f'Ambiguous directory location. Please make sure there is only one classification_deeptale folder'
+    raise Exception(f'Ambiguous directory location. Please make sure there is only one classification_flowers folder'
                     f'{BASE_PATH}')
 else:
     BASE_PATH = BASE_PATH[0]
