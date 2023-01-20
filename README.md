@@ -33,7 +33,7 @@ Image with confidence score and predicted flower will pop up. Click `Enter` to c
 
 ## Training 
 
-Model was trained on flowers dataset taken from: [link](https://www.kaggle.com/datasets/alxmamaev/flowers-recognition)
+Model was trained on flowers dataset taken from: [kaggle.com/datasets/alxmamaev/flowers-recognition](https://www.kaggle.com/datasets/alxmamaev/flowers-recognition)
 I decided to fine-tune ResNet34 model with new FCN at the end of the network. I trained two models: one with frozen parameters in convolution part, and one 
 with all parameters unfrozen. I saved the models, from the epoch with the best validation loss. Models parameters and plots with learning history are held in `models` folder
 In order to same training please follow these steps:
