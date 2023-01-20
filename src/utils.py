@@ -11,32 +11,36 @@ from torchvision.datasets import ImageFolder
 from torchvision.transforms import Compose
 
 
-def get_dataloader(root_dir: str,
-                   transforms: Compose,
-                   target_transform: Compose,
-                   batch_size: int,
-                   shuffle: bool = True) -> Tuple[ImageFolder, DataLoader]:
+def get_dataloader(
+    root_dir: str,
+    transforms: Compose,
+    target_transform: Compose,
+    batch_size: int,
+    shuffle: bool = True,
+) -> Tuple[ImageFolder, DataLoader]:
     """
     Get torch ImageFolder and Dataloader from given root directory. Folder must follow ImageFolder structure
     """
-    ds = ImageFolder(root=root_dir,
-                     transform=transforms,
-                     target_transform=target_transform)
-    dataloader = DataLoader(dataset=ds,
-                            batch_size=batch_size,
-                            shuffle=shuffle,
-                            pin_memory=True if config.DEVICE == 'cuda' else False)
+    ds = ImageFolder(
+        root=root_dir, transform=transforms, target_transform=target_transform
+    )
+    dataloader = DataLoader(
+        dataset=ds,
+        batch_size=batch_size,
+        shuffle=shuffle,
+        pin_memory=True if config.DEVICE == "cuda" else False,
+    )
     return ds, dataloader
 
 
-def save_plot(history: dict,
-              key: str,
-              output_path: str):
+def save_plot(history: dict, key: str, output_path: str):
     """
     Plot and save history of parameter during model learning.
     """
-    if key not in ['acc', 'loss']:
-        print('Invalid key type, no image will be saved. Please choose from [acc, loss]')
+    if key not in ["acc", "loss"]:
+        print(
+            "Invalid key type, no image will be saved. Please choose from [acc, loss]"
+        )
     else:
         try:
             plt.style.use("ggplot")
@@ -47,9 +51,9 @@ def save_plot(history: dict,
             plt.ylabel(key)
             plt.legend(loc="lower left")
             plt.savefig(os.path.join(config.SAVE_MODEL_PATH, output_path))
-            print('Image correctly saved.')
+            print("Image correctly saved.")
         except FileNotFoundError:
-            print('Path does not exist.')
+            print("Path does not exist.")
 
 
 def preprocess_image(image: np.ndarray) -> torch.Tensor:
