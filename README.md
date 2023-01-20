@@ -13,3 +13,6 @@ This repository contains model, which classify flowers into one of 5 categories:
 ## Installation
 
 Please follow these steps to 
+
+1. `git clone git@github.com:michalpiasecki0/classification_flowers.git`
+2. 
