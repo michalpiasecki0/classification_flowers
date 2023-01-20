@@ -21,7 +21,7 @@ def parse_arguments():
 def predict(image_path: str, device: str, model_name: str):
 
     if device not in ['cpu', 'cuda']:
-        raise Exception('Invalid device type. Choose from cpu/gpu')
+        raise Exception('Invalid device type. Choose from cpu/cuda')
     if device == 'cuda' and not torch.cuda.is_available():
         raise Exception('Trying to use CUDA, with no active drivers. Make sure you have turned on GPU correctly.')
     if not os.path.exists(image_path):
