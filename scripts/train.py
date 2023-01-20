@@ -83,9 +83,9 @@ def perform_learning(epochs,
         train_loss, train_acc = train_loop(train_loader, model, loss_fn, optimizer)
         val_loss, val_acc = test_loop(val_loader, model, loss_fn)
 
-        history['train_loss'].append(train_loss)
+        history['train_loss'].append(train_loss.item())
         history['train_acc'].append(train_acc)
-        history['val_loss'].append(val_loss)
+        history['val_loss'].append(val_loss.item())
         history['val_acc'].append(val_acc)
         if save_current_best and val_loss <= min(history['val_loss']):
             torch.save(model, os.path.join(save_folder, 'model.pth'))
