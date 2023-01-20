@@ -106,7 +106,8 @@ if __name__ == '__main__':
     train_dataset, train_loader = get_dataloader(root_dir=config.TRAIN_PATH,
                                                  transforms=config.TRAIN_TRANSFORM,
                                                  target_transform=None,
-                                                 batch_size=config.BATCH_SIZE)
+                                                 batch_size=config.BATCH_SIZE,
+                                                 shuffle=True)
     _, val_loader = get_dataloader(root_dir=config.VAL_PATH,
                                    transforms=config.VALIDATION_TRANSFORM,
                                    target_transform=None,
