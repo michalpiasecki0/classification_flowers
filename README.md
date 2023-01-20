@@ -17,6 +17,7 @@ Please follow these steps:
 1. Move to directory where you want to save this project
 1. Clone directory: `git clone git@github.com:michalpiasecki0/classification_flowers.git`
 2. Create venv for this project: `python3 -m venv venv`
+3. Switch to venv: `source venv/bin/activate`
 3. Install required packages: `pip install -r requirements.txt`
 
 
