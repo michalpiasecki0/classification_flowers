@@ -2,7 +2,7 @@ import torch
 import os
 from pathlib import Path
 
-BASE_PATH = list(Path('/home').glob('**/classification_deeptale'))
+BASE_PATH = list(Path('/home').glob('**/classification_flowers'))
 
 if len(BASE_PATH) != 1:
     raise Exception('Ambiguous directory location. Please make sure there is only one `classification_flowers` folder')
@@ -14,7 +14,7 @@ TRAIN_PATH = os.path.join(BASE_PATH, 'data', 'dataset', 'train')
 VAL_PATH = os.path.join(BASE_PATH, 'data', 'dataset', 'val')
 TEST_PATH = os.path.join(BASE_PATH, 'data', 'dataset', 'test')
 
-SAVE_MODEL_PATH = os.path.join(BASE_PATH, 'data', 'models', 'model_1')
+SAVE_MODEL_PATH = os.path.join(BASE_PATH, 'data', 'models', 'model_backbone_updated')
 
 # parameters for models trained on imagenet
 MEAN = [0.485, 0.456, 0.406]
