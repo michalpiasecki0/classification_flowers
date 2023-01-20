@@ -53,11 +53,10 @@ I performed following additional tasks:
 This is done by `fast.api.py`. For interference please type in following command in root folder
 `uvicorn fast_api:app --reload`
 
-By default this service is run on 80000 port. To get more details about arguments pass:
-`http://127.0.0.1:8000/docs`
-To infer from model, use GET with parameters listed in docs, and image_path indicating location of image on your machine
-E.g
-`http://127.0.0.1:8000/infer/?device=cpu&model_name=backbone_frozen&image_path=/home/skocznapanda/programming/classification_deeptale/data/interference/example_1.jpg`  
-The response gives you predicted class and model confidence  
+By default this service is run on 8000 port. To get more details about arguments pass:  
+`http://127.0.0.1:8000/docs`  
+To infer from model, use GET with parameters listed in docs, and image_path indicating location of image on your machine.  
+E.g `http://127.0.0.1:8000/infer/device=cpu&model_name=backbone_frozen&image_path=/home/skocznapanda/programming/classification_deeptale/data/interference/example_1.jpg`    
+The response gives you predicted class and model confidence    
 E.g `[["tulip",0.9980118274688721]]`
 
