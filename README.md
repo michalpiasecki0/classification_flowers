@@ -22,7 +22,7 @@ Please follow these steps:
 
 ## Interference
 
-Script `scripts\predict.py` is responsible for interference.
+Script `scripts/predict.py` is responsible for interference.
 Please type in following command in command line to perform interference on some photo.
 
 `python scripts/predict.py -i <path_to_image>`
