@@ -40,9 +40,9 @@ In order to same training please follow these steps:
 
 1. Download flowers dataset from [link](https://www.kaggle.com/datasets/alxmamaev/flowers-recognition), unzip it and 
 place `flowers` folder  in `classfication_flowers/data` directory
-2. From root folder run `python scripts/build_dataset.py`. This splits data into format accessible for model training
-3. `configs/train_config.py` contains all training parameters, as well as model saving path. If you want you can change it.
-4. Run `scripts/train.py` from root folder.
+2. From root folder run `python src/build_dataset.py`. This splits data into format accessible for model training
+3. `conf/train_config.py` contains all training parameters, as well as model saving path. If you want you can change it.
+4. Run `src/train.py` from root folder.
 
 
 ## Additional tasks
