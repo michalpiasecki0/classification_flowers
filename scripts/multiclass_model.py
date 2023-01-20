@@ -9,8 +9,8 @@ class MultiClassClassifier(nn.Module):
     """
     def __init__(self, class_number):
         super(MultiClassClassifier, self).__init__()
-        self.resnet = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
-        self.resnet.requires_grad_(False)
+        self.backbone = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+        self.backbone.requires_grad_(False)
         self.head = nn.Sequential(
             nn.Linear(1000, 512),
             nn.ReLU(),
@@ -22,7 +22,7 @@ class MultiClassClassifier(nn.Module):
         )
 
     def forward(self, x):
-        x = self.resnet(x)
+        x = self.backbone(x)
         x = self.head(x)
         return x
 

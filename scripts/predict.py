@@ -8,6 +8,7 @@ import torch
 import configs.train_config as config
 
 from scripts.utils import preprocess_image
+from scripts.multiclass_model import MultiClassClassifier
 
 
 def parse_arguments():
