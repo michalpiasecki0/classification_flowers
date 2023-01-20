@@ -60,5 +60,6 @@ The response gives you predicted class and model confidence
 E.g `[["tulip",0.9980118274688721]]`
 
 ### Use pre-commit
+I installed pre-commit and added `.pre-commit-config.yaml`  to the directory root.
 
 
