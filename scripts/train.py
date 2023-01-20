@@ -18,7 +18,7 @@ def train_loop(dataloader, model, loss_fn, optimizer):
     total_loss, total_acc = 0, 0
 
     model.train()
-    for batch, (X, y) in tqdm(enumerate(dataloader)):
+    for batch, (X, y) in enumerate(dataloader):
         predictions = model(X)
         loss = loss_fn(predictions, y)
 
@@ -29,6 +29,8 @@ def train_loop(dataloader, model, loss_fn, optimizer):
 
         total_loss += loss
         total_acc += (predictions.argmax(1) == y).type(torch.float).sum().item()
+
+        print(f'Batch {batch} / {n_batches} processed')
 
     avg_loss = total_loss / n_batches
     avg_acc = total_acc / dataset_size
@@ -47,11 +49,13 @@ def test_loop(dataloader, model, loss_fn):
 
     model.eval()
     with torch.no_grad():
-        for X, y in dataloader:
+        for batch, (X, y) in enumerate(dataloader):
             predictions = model(X)
             loss = loss_fn(predictions, y)
             total_loss += loss
             total_acc += (predictions.argmax(1) == y).type(torch.float).sum().item()
+
+            print(f'Batch {batch} / {n_batches} processed')
 
     avg_loss = total_loss / n_batches
     avg_acc = total_acc / dataset_size
@@ -75,7 +79,7 @@ def perform_learning(epochs,
                'val_acc': []}
 
     for epoch in tqdm(range(epochs)):
-
+        print(f'Epoch numer: {epoch + 1}')
         train_loss, train_acc = train_loop(train_loader, model, loss_fn, optimizer)
         val_loss, val_acc = test_loop(val_loader, model, loss_fn)
 

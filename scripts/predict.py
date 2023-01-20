@@ -7,6 +7,7 @@ import os.path
 import torch
 import configs.train_config as config
 
+from pathlib import Path
 from scripts.utils import preprocess_image
 from scripts.multiclass_model import MultiClassClassifier
 
@@ -21,11 +22,19 @@ if __name__ == '__main__':
 
     args = vars(parse_arguments())
 
+    if not os.path.exists(args['image']):
+        raise Exception('Image path does not exist')
+
+    if Path(args['image']).suffix not in ['.jpg', '.jpeg', 'png', 'bmp']:
+        raise Exception('Invalid image format. Please ensure that image is in one of following formats: '
+                        '[jpg, jpeg, png, bmp]')
+
     model = torch.load(os.path.join(config.SAVE_MODEL_PATH, 'model.pth')).to(config.DEVICE)
     model.eval()
 
     image = cv2.imread(args["image"])
     orig = image.copy()
+
     image = preprocess_image(image)
 
     results = model(image)
