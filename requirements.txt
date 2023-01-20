@@ -6,4 +6,5 @@ torch==1.13.1
 torchvision==0.14.1
 tqdm==4.64.1
 fastapi~=0.89.1
+uvicorn
 pre-commit
