@@ -26,11 +26,15 @@ Please follow these steps:
 Script `src/predict.py` is responsible for interference.
 Please type in following command in command line to perform interference on some photo.
 
-`python src/predict.py -i <path_to_image>`
+`python src/predict.py -i <path_to_image>`  
+
+Image with confidence score and predicted flower will pop up. Click `Enter` to close window.
+
+E.g  
+`python src/predict.py -i data/interference/example_1.jpg`
 
 Some example photos are located in `data/interference` folder.
 
-Image with confidence score and predicted flower will pop up. Click `Enter` to close window.
 
 ## Training 
 
