@@ -1,8 +1,7 @@
-"""DESCRIPTION"""
+"""Script for building dataset for training from flowers dataset"""
 
 from typing import List
 from pathlib import Path
-from imutils import paths
 import shutil
 import numpy as np
 
@@ -10,6 +9,9 @@ import conf.builder_config as config
 
 
 def copy_images(image_paths: List[str], folder: Path):
+    """
+    Given list of file paths, copy them to specific folder.
+    """
 
     if folder.exists():
         print(f"{folder} already existed, it was removed and new content is placed")
@@ -25,7 +27,10 @@ def copy_images(image_paths: List[str], folder: Path):
 
 
 if __name__ == "__main__":
-    image_paths = list(paths.list_images(config.FLOWERS_PATH))
+
+    image_paths = list(
+        map(lambda k: str(k), list(Path(config.FLOWERS_PATH).rglob("*.jpg")))
+    )
     np.random.shuffle(image_paths)
 
     train_last_index = int(len(image_paths) * config.TRAIN_TEST_VAL_RATIO[0])

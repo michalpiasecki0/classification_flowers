@@ -70,7 +70,7 @@ def predict(image_path: str, device: str, model_name: str):
         torch.max(probabilities).item(),
     )
 
-    return config.LABELS_DICT[best_index], best_prob
+    return config.LABELS_DICT[int(best_index)], best_prob
 
 
 if __name__ == "__main__":

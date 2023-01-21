@@ -2,14 +2,14 @@ import torch
 import os
 from pathlib import Path
 
-BASE_PATH = list(Path("/home").glob("**/classification_flowers"))
+base_path = list(Path("/home").glob("**/classification_flowers"))
 
-if len(BASE_PATH) != 1:
+if len(base_path) != 1:
     raise Exception(
         "Ambiguous directory location. Please make sure there is only one `classification_flowers` folder"
     )
 else:
-    BASE_PATH = BASE_PATH[0]
+    BASE_PATH = str(base_path[0])
 
 # paths to train, val, test folders
 TRAIN_PATH = os.path.join(BASE_PATH, "data", "dataset", "train")

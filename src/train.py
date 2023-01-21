@@ -4,7 +4,7 @@ import os.path
 import torch
 import conf.train_config as config
 
-from typing import Optional
+from typing import Optional, Dict
 from torchvision import transforms
 from tqdm import tqdm
 from src.utils import get_dataloader, save_plot
@@ -84,7 +84,12 @@ def perform_learning(
     early_stopping: Optional[int],
 ):
 
-    history = {"train_loss": [], "train_acc": [], "val_loss": [], "val_acc": []}
+    history: Dict[str, list] = {
+        "train_loss": [],
+        "train_acc": [],
+        "val_loss": [],
+        "val_acc": [],
+    }
 
     for epoch in tqdm(range(epochs)):
         print(f"Epoch numer: {epoch + 1}")

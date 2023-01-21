@@ -1,15 +1,15 @@
 import os.path
 from pathlib import Path
 
-BASE_PATH = list(Path("/home").glob("**/classification_flowers"))
+base_paths = list(Path("/home").glob("**/classification_flowers"))
 
-if len(BASE_PATH) != 1:
+if len(base_paths) != 1:
     raise Exception(
         f"Ambiguous directory location. Please make sure there is only one classification_flowers folder"
-        f"{BASE_PATH}"
+        f"{base_paths}"
     )
 else:
-    BASE_PATH = BASE_PATH[0]
+    BASE_PATH = base_paths[0]
 
 FLOWERS_PATH = os.path.join(
     BASE_PATH,
