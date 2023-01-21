@@ -9,7 +9,7 @@ from src.train import train_loop
 
 class TrainLoopTest(unittest.TestCase):
     def setUp(self) -> None:
-        _, dataloader = get_dataloader(
+        _, self.dataloader = get_dataloader(
             root_dir="../data/dataset/train",
             transforms=transforms.Compose(
                 [transforms.Resize((250, 250)), transforms.ToTensor()]
@@ -18,18 +18,33 @@ class TrainLoopTest(unittest.TestCase):
             batch_size=3,
             shuffle=False,
         )
-        model = MultiClassClassifier(class_number=5, train_backbone=False).to("cpu")
-        loss_fn = torch.nn.CrossEntropyLoss()
-        opt = torch.optim.Adam(model.parameters(), lr=1e-3)
-
-        self.acc, self.loss = train_loop(dataloader, model, loss_fn, opt, "cpu")
+        self.model = MultiClassClassifier(class_number=5, train_backbone=False).to(
+            "cpu"
+        )
+        self.loss_fn = torch.nn.CrossEntropyLoss()
+        self.opt = torch.optim.Adam(self.model.parameters(), lr=1e-3)
 
     def test_types(self):
-        self.assertTrue(isinstance(self.acc, torch.Tensor))
-        self.assertTrue(isinstance(self.loss, float))
+        acc, loss = train_loop(
+            self.dataloader, self.model, self.loss_fn, self.opt, "cpu"
+        )
+        self.assertTrue(isinstance(acc, torch.Tensor))
+        self.assertTrue(isinstance(loss, float))
 
     def test_values(self):
-        self.assertTrue(0 < self.acc < 100)
+        acc, _ = train_loop(self.dataloader, self.model, self.loss_fn, self.opt, "cpu")
+        self.assertTrue(0 < acc < 100)
+
+    def test_wrong_device(self):
+        self.assertRaises(
+            RuntimeError,
+            train_loop,
+            self.dataloader,
+            self.model,
+            self.loss_fn,
+            self.opt,
+            "device",
+        )
 
 
 if __name__ == "__main__":

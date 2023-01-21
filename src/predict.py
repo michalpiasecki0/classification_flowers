@@ -29,12 +29,14 @@ def predict(image_path: str, device: str, model_name: str):
 
     if device not in ["cpu", "cuda"]:
         raise Exception("Invalid device type. Choose from cpu/cuda")
+
     if device == "cuda" and not torch.cuda.is_available():
         raise Exception(
             "Trying to use CUDA, with no active drivers. Make sure you have turned on GPU correctly."
         )
+
     if not os.path.exists(image_path):
-        raise Exception("Image path does not exist")
+        raise FileNotFoundError("Image path does not exist")
 
     if Path(image_path).suffix not in [".jpg", ".jpeg", "png", "bmp"]:
         raise Exception(

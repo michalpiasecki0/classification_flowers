@@ -62,5 +62,7 @@ E.g `[["tulip",0.9980118274688721]]`
 
 ### Use pre-commit
 I installed pre-commit and added `.pre-commit-config.yaml`  to the directory root.
+`pre-commit-config.yaml` contains black and mypy. Torch libraries (E.g torchvision) do not
+have type-hints, so as a workaround mypy ignores missing import error.
 
 

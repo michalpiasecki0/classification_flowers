@@ -18,6 +18,33 @@ class PredictTest(unittest.TestCase):
     def test_label(self):
         self.assertTrue(self.label in LABELS_DICT.values())
 
+    def test_wrong_path(self):
+        self.assertRaises(
+            FileNotFoundError,
+            predict,
+            image_path="alamakota",
+            device="cpu",
+            model_name="backbone_frozen",
+        )
+
+    def test_wrong_device(self):
+        self.assertRaises(
+            Exception,
+            predict,
+            image_path="./data/test_image.jpg",
+            device="random_device",
+            model_name="backbone_frozen",
+        )
+
+    def test_wrong_model(self):
+        self.assertRaises(
+            Exception,
+            predict,
+            image_path="./data/test_image.jpg",
+            device="cpu",
+            model_name="random_model",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
